@@ -1,6 +1,6 @@
 package com.example.demo.calc;
 
-import com.example.demo.calc.dto.TwoElementOperation;
+import com.example.demo.calc.dto.MultiElementOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,8 +18,8 @@ public class CalcHandler {
     private CalcService calcService;
 
     @PutMapping(value="/add", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Integer> add(@RequestBody TwoElementOperation operation) {
-        Integer result = calcService.add(operation.getFirstValue(), operation.getSecondValue());
+    public ResponseEntity<Integer> add(@RequestBody MultiElementOperation operation) {
+        Integer result = calcService.add(operation.getValues());
         return ResponseEntity.ok(result);
     }
 }

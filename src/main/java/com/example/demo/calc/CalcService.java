@@ -1,8 +1,10 @@
 package com.example.demo.calc;
 
+import com.example.demo.calc.dto.MultiElementOperation;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 class CalcService {
@@ -13,9 +15,9 @@ class CalcService {
         this.operationsRepository = operationsRepository;
     }
 
-    public Integer add(int a, int b){
-        Operation operation = new Operation(Arrays.asList(a,b).toString(), "ADD");
+    public Integer add(List<Integer> values) {
+        Operation operation = new Operation(values.toString(), "ADD");
         operationsRepository.save(operation);
-        return a + b;
+        return values.stream().mapToInt(Integer::intValue).sum();
     }
 }

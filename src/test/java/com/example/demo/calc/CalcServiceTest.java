@@ -9,6 +9,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.PostConstruct;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -27,19 +29,19 @@ public class CalcServiceTest {
 
     @Test
     public void addTest_simple() {
-        Integer result = calcService.add(1, 1);
+        Integer result = calcService.add(Arrays.asList(1, 1));
         assertThat(result).isEqualTo(2);
     }
 
     @Test
     public void addTest_addWithZero() {
-        Integer result = calcService.add(0, 1);
+        Integer result = calcService.add(Arrays.asList(0, 1));
         assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void addTest_addWithNegativeNumber() {
-        Integer result = calcService.add(1, -1);
+        Integer result = calcService.add(Arrays.asList(1, -1));
         assertThat(result).isEqualTo(0);
     }
 
