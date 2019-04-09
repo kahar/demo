@@ -22,8 +22,21 @@ public class CalcServiceTest {
     }
 
     @Test
-    public void addTest() {
+    public void addTest_simple() {
         Integer result = calcService.add(1, 1);
         assertThat(result).isEqualTo(2);
     }
+
+    @Test
+    public void addTest_addWithZero() {
+        Integer result = calcService.add(0, 1);
+        assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void addTest_addWithNegativeNumber() {
+        Integer result = calcService.add(1, -1);
+        assertThat(result).isEqualTo(0);
+    }
+
 }
