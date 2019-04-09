@@ -3,6 +3,7 @@ package com.example.demo.calc;
 import com.example.demo.DemoApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -14,11 +15,14 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 @SpringBootTest(classes = DemoApplication.class)
 public class CalcServiceTest {
 
+    @Autowired
+    private OperationsRepository operationsRepository;
+
     private CalcService calcService;
 
     @PostConstruct
     public void setup() {
-        calcService = new CalcService();
+        calcService = new CalcService(operationsRepository);
     }
 
     @Test
