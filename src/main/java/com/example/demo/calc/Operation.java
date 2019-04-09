@@ -12,10 +12,8 @@ class Operation {
     @GeneratedValue(strategy = SEQUENCE, generator = "operation_id_seq")
     private Long id;
 
-    @Column(name = "arguments")
     private String arguments;
 
-    @Column(name = "type_of_operation")
     private String typeOfOperation;
 
     public Operation() {
